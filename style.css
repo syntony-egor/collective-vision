@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #1a1a1a;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#slideshow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  height: 100dvh;
+  position: relative;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.slide.fade-out {
+  opacity: 0;
+}
+
+/* Title slide */
+.slide-title {
+  text-align: center;
+}
+
+.slide-title h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.6rem, 5vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.slide-title .subtitle {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  color: #888;
+}
+
+/* Step intro slide */
+.slide-step-intro {
+  text-align: center;
+  position: relative;
+}
+
+.step-number {
+  font-size: clamp(8rem, 20vw, 16rem);
+  font-weight: 700;
+  opacity: 0.1;
+  line-height: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+  pointer-events: none;
+}
+
+.step-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 400;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.step-description {
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  color: #aaa;
+  max-width: 500px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* Image slide */
+.slide-image {
+  text-align: center;
+}
+
+.slide-image img {
+  max-height: 70vh;
+  max-width: 90vw;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.slide-image .caption {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  color: #ccc;
+  margin-top: 1.2rem;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Text slide */
+.slide-text {
+  text-align: center;
+}
+
+.slide-text .text-content {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.05rem, 2.8vw, 1.25rem);
+  line-height: 1.8;
+  max-width: 600px;
+  color: #d0d0d0;
+  white-space: pre-line;
+}
+
+/* Navigation */
+#nav {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 0.9rem;
+  color: #555;
+  z-index: 10;
+}
+
+.nav-arrow {
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 200ms;
+}
+
+.nav-arrow:hover {
+  color: #999;
+}
+
+#counter {
+  font-variant-numeric: tabular-nums;
+  min-width: 4rem;
+  text-align: center;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .slide {
+    padding: 1.5rem 1rem;
+  }
+
+  .slide-image img {
+    max-height: 60vh;
+    max-width: 95vw;
+  }
+
+  #nav {
+    bottom: 1rem;
+  }
+}
