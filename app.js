@@ -95,12 +95,24 @@ function go(index) {
     current = index;
     slideEl.innerHTML = render(current);
     slideEl.classList.remove("fade-out");
+    preload(current);
   }, 200);
+}
+
+// Preload nearby images
+function preload(index) {
+  for (let i = index + 1; i < slides.length && i <= index + 3; i++) {
+    if (slides[i].image) {
+      const img = new Image();
+      img.src = slides[i].image;
+    }
+  }
 }
 
 // Init
 slideEl.innerHTML = render(0);
 counterEl.textContent = `1 / ${slides.length}`;
+preload(0);
 
 // Keyboard
 document.addEventListener("keydown", (e) => {
