@@ -39,12 +39,12 @@ const slides = [
 
   // Step 4
   { type: "step-intro", step: 4, name: "Наблюдатель", description: "Один стол. Пять человек. Каждый — в своей вселенной." },
-  { type: "image", image: "images/step4/1-neutral.png", caption: "Пятеро за столом. Обычный вечер." },
-  { type: "image", image: "images/step4/2-love.png", caption: "Влюблён. Один человек — весь мир. Остальные растворились." },
-  { type: "image", image: "images/step4/4-irritation.png", caption: "Злость. Тот кто напротив — огромный. Стол стал теснее." },
-  { type: "image", image: "images/step4/6-fatigue.png", caption: "Устал. Лица без деталей. Стол бесконечный. Неинтересно." },
-  { type: "image", image: "images/step4/5-fear.png", caption: "Тревога. Все смотрят. Стены ближе. Выход далеко." },
-  { type: "image", image: "images/step4/3-joy.png", caption: "Радость. Всё яркое, живое, вкусное. Потолок стал выше." },
+  { type: "image", image: "images/step4/1-neutral.png", caption: "Пятеро друзей в кафе. Обычный вечер, чай, разговоры. Просто сцена." },
+  { type: "image", image: "images/step4/2-love.png", caption: "Влюблён. Она одна в фокусе. Остальные размылись, стали фоном. Лампы превратились в золотые кружки. Мир сузился до одного лица." },
+  { type: "image", image: "images/step4/4-irritation.png", caption: "Злость. Красноватый свет, тяжёлые тени. Лица напряжены. Стол стал теснее, стены давят. Вилки и края стаканов лезут в глаза." },
+  { type: "image", image: "images/step4/6-fatigue.png", caption: "Устал. Цвета ушли, всё серое и плоское. Лица неразличимы, еда неинтересна. Как через грязное стекло." },
+  { type: "image", image: "images/step4/5-fear.png", caption: "Тревога. Все повернулись к тебе. Тёмные углы, тени снизу на лицах. Потолок ниже, выхода не видно." },
+  { type: "image", image: "images/step4/3-joy.png", caption: "Радость. Цвета взорвались, всё сочное и живое. Еда аппетитная, лица тёплые. Пространство расширилось, потолок выше." },
   { type: "text", text: "Один стол. Пять человек. Каждый — в своей вселенной.\nНикто не видит один и тот же ужин." },
 
   // Step 5
@@ -80,6 +80,18 @@ function currentStep(index) {
   return step;
 }
 
+// Get position within current step (1-based) and step size
+function stepPosition(index) {
+  const step = currentStep(index);
+  if (step === 0) return { pos: index + 1, total: 1, step: 0 }; // title/pre-step
+  const start = stepIndices[step];
+  // Find end: next step-intro or end of slides
+  const allSteps = Object.values(stepIndices).sort((a, b) => a - b);
+  const nextStepIdx = allSteps.find(i => i > start);
+  const end = nextStepIdx !== undefined ? nextStepIdx : slides.length;
+  return { pos: index - start + 1, total: end - start, step };
+}
+
 function render(index) {
   const s = slides[index];
   let html = "";
@@ -99,7 +111,8 @@ function render(index) {
       break;
   }
 
-  counterEl.textContent = `${index + 1} / ${slides.length}`;
+  const sp = stepPosition(index);
+  counterEl.textContent = sp.step > 0 ? `${sp.pos} / ${sp.total}` : "";
   updateStepDots(index);
   return html;
 }
@@ -148,7 +161,7 @@ function updateStepDots(index) {
 
 // Init
 slideEl.innerHTML = render(0);
-counterEl.textContent = `1 / ${slides.length}`;
+// (counter set by render)
 preload(0);
 
 // Keyboard

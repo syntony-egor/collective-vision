@@ -5,8 +5,8 @@
 }
 
 body {
-  background: #1a1a1a;
-  color: #e0e0e0;
+  background: #0f1419;
+  color: #c8c8c8;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   min-height: 100vh;
   min-height: 100dvh;
@@ -52,11 +52,12 @@ body {
   font-weight: 400;
   line-height: 1.4;
   margin-bottom: 1rem;
+  color: #e8b84b;
 }
 
 .slide-title .subtitle {
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-  color: #888;
+  color: #666;
 }
 
 /* Step intro slide */
@@ -68,13 +69,14 @@ body {
 .step-number {
   font-size: clamp(8rem, 20vw, 16rem);
   font-weight: 700;
-  opacity: 0.1;
+  opacity: 0.08;
   line-height: 1;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -65%);
   pointer-events: none;
+  color: #e8b84b;
 }
 
 .step-name {
@@ -84,11 +86,12 @@ body {
   margin-bottom: 1rem;
   position: relative;
   z-index: 1;
+  color: #e8b84b;
 }
 
 .step-description {
   font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-  color: #aaa;
+  color: #888;
   max-width: 500px;
   line-height: 1.6;
   position: relative;
@@ -106,12 +109,13 @@ body {
   object-fit: contain;
   display: block;
   margin: 0 auto;
+  border-radius: 8px;
 }
 
 .slide-image .caption {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-  color: #ccc;
+  color: #999;
   margin-top: 1.2rem;
   max-width: 600px;
   line-height: 1.6;
@@ -127,7 +131,7 @@ body {
   font-size: clamp(1.05rem, 2.8vw, 1.25rem);
   line-height: 1.8;
   max-width: 600px;
-  color: #d0d0d0;
+  color: #b0b0b0;
   white-space: pre-line;
 }
 
@@ -141,7 +145,7 @@ body {
   align-items: center;
   gap: 1.2rem;
   font-size: 0.9rem;
-  color: #555;
+  color: #444;
   z-index: 10;
 }
 
@@ -152,7 +156,7 @@ body {
 }
 
 .nav-arrow:hover {
-  color: #999;
+  color: #888;
 }
 
 #counter {
@@ -177,19 +181,19 @@ body {
   font-size: 0.7rem;
   border-radius: 50%;
   cursor: pointer;
-  color: #555;
-  border: 1px solid #333;
+  color: #444;
+  border: 1px solid #2a2a3a;
   transition: all 200ms;
 }
 
 .step-dot:hover {
-  color: #999;
-  border-color: #666;
+  color: #888;
+  border-color: #555;
 }
 
 .step-dot.active {
-  color: #ccc;
-  border-color: #888;
+  color: #e8b84b;
+  border-color: #e8b84b;
 }
 
 /* Mobile */
