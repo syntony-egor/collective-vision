@@ -122,6 +122,7 @@ function go(index) {
   slideEl.classList.add("fade-out");
   setTimeout(() => {
     current = index;
+    history.replaceState(null, "", "#" + current);
     slideEl.innerHTML = render(current);
     slideEl.classList.remove("fade-out");
     preload(current);
@@ -159,10 +160,17 @@ function updateStepDots(index) {
   });
 }
 
-// Init
-slideEl.innerHTML = render(0);
-// (counter set by render)
-preload(0);
+// Init — read slide from URL hash
+const startSlide = Math.max(0, Math.min(slides.length - 1, parseInt(location.hash.slice(1)) || 0));
+current = startSlide;
+slideEl.innerHTML = render(current);
+preload(current);
+if (startSlide > 0) history.replaceState(null, "", "#" + current);
+
+window.addEventListener("hashchange", () => {
+  const idx = parseInt(location.hash.slice(1));
+  if (!isNaN(idx) && idx >= 0 && idx < slides.length && idx !== current) go(idx);
+});
 
 // Keyboard
 document.addEventListener("keydown", (e) => {
