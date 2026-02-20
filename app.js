@@ -38,14 +38,14 @@ const slides = [
   { type: "text", text: "От хаоса фотонов до «Маша улыбается» — шесть слоёв конструирования.\nКаждый слой добавляет то, чего не было в предыдущем.\nНи на одном из них нет лица.\nЛицо — финальный продукт. Не вход." },
 
   // Step 4
-  { type: "step-intro", step: 4, name: "Наблюдатель", description: "Та же женщина. Ничего не менялось снаружи. Менялся только тот, кто смотрит." },
-  { type: "image", image: "images/step4/1-calm.png", caption: "Спокоен. Лицо — просто лицо." },
-  { type: "image", image: "images/step4/2-love.png", caption: "Влюблён. Кожа светится, глаза сияют. Это не лицо светится — это ты." },
-  { type: "image", image: "images/step4/3-joy.png", caption: "Радость. Мир стал ярче, чётче, живее. Каждая деталь интересна." },
-  { type: "image", image: "images/step4/4-irritation.png", caption: "Злишься. Губы кривые, взгляд тяжёлый. Ничего не изменилось. Только ты." },
-  { type: "image", image: "images/step4/5-fear.png", caption: "Страшно. Лицо нависло. Глаза огромные. Темно вокруг." },
-  { type: "image", image: "images/step4/6-fatigue.png", caption: "Устал. Лицо — просто плоское пятно. Неинтересно." },
-  { type: "text", text: "Одно лицо. Шесть версий. Ни одна — не лицо. Каждая — ты." },
+  { type: "step-intro", step: 4, name: "Наблюдатель", description: "Один стол. Пять человек. Каждый — в своей вселенной." },
+  { type: "image", image: "images/step4/1-neutral.png", caption: "Пятеро за столом. Обычный вечер." },
+  { type: "image", image: "images/step4/2-love.png", caption: "Влюблён. Один человек — весь мир. Остальные растворились." },
+  { type: "image", image: "images/step4/4-irritation.png", caption: "Злость. Тот кто напротив — огромный. Стол стал теснее." },
+  { type: "image", image: "images/step4/6-fatigue.png", caption: "Устал. Лица без деталей. Стол бесконечный. Неинтересно." },
+  { type: "image", image: "images/step4/5-fear.png", caption: "Тревога. Все смотрят. Стены ближе. Выход далеко." },
+  { type: "image", image: "images/step4/3-joy.png", caption: "Радость. Всё яркое, живое, вкусное. Потолок стал выше." },
+  { type: "text", text: "Один стол. Пять человек. Каждый — в своей вселенной.\nНикто не видит один и тот же ужин." },
 
   // Step 5
   { type: "step-intro", step: 5, name: "Поворот", description: "После всего визуального пиршества." },
