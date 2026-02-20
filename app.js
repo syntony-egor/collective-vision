@@ -65,6 +65,21 @@ const prevEl = document.getElementById("prev");
 const nextEl = document.getElementById("next");
 const slideshowEl = document.getElementById("slideshow");
 
+// Build step index: map step number → slide index
+const stepIndices = {};
+slides.forEach((s, i) => {
+  if (s.type === "step-intro") stepIndices[s.step] = i;
+});
+
+// Find which step a slide belongs to
+function currentStep(index) {
+  let step = 0;
+  for (let i = index; i >= 0; i--) {
+    if (slides[i].type === "step-intro") { step = slides[i].step; break; }
+  }
+  return step;
+}
+
 function render(index) {
   const s = slides[index];
   let html = "";
@@ -85,6 +100,7 @@ function render(index) {
   }
 
   counterEl.textContent = `${index + 1} / ${slides.length}`;
+  updateStepDots(index);
   return html;
 }
 
@@ -109,6 +125,27 @@ function preload(index) {
   }
 }
 
+// Step dots
+const stepsNav = document.createElement("div");
+stepsNav.id = "steps-nav";
+const stepNumbers = Object.keys(stepIndices).map(Number).sort((a, b) => a - b);
+stepNumbers.forEach(num => {
+  const dot = document.createElement("span");
+  dot.className = "step-dot";
+  dot.textContent = num;
+  dot.dataset.step = num;
+  dot.addEventListener("click", (e) => { e.stopPropagation(); go(stepIndices[num]); });
+  stepsNav.appendChild(dot);
+});
+document.getElementById("nav").prepend(stepsNav);
+
+function updateStepDots(index) {
+  const active = currentStep(index);
+  document.querySelectorAll(".step-dot").forEach(dot => {
+    dot.classList.toggle("active", Number(dot.dataset.step) === active);
+  });
+}
+
 // Init
 slideEl.innerHTML = render(0);
 counterEl.textContent = `1 / ${slides.length}`;
@@ -123,6 +160,12 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") {
     e.preventDefault();
     go(current - 1);
+  }
+  // Number keys 1-5 jump to steps
+  const num = parseInt(e.key);
+  if (num >= 1 && num <= 5 && stepIndices[num] !== undefined) {
+    e.preventDefault();
+    go(stepIndices[num]);
   }
 });
 
