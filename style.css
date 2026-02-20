@@ -121,6 +121,16 @@ body {
   text-align: left;
 }
 
+.slide-image .subcaption {
+  font-size: clamp(0.75rem, 1.8vw, 0.82rem);
+  color: #5a5a5a;
+  margin-top: 0.4rem;
+  padding: 0 0.2rem;
+  line-height: 1.5;
+  text-align: left;
+  font-style: italic;
+}
+
 /* Text slide */
 .slide-text {
   text-align: center;
